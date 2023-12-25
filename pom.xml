@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<!-- Change to your own main package name. -->
-	<groupId>org.mineacademy</groupId>
+	<groupId>dev.ericvega</groupId>
 	
 	<!-- Change to your plugin name, must be lower cased and match your end package name. No spaces. -->
-	<artifactId>plugintemplate</artifactId>
+	<artifactId>rankforge</artifactId>
 	
 	<!-- Change to your plugin's name. Can contain capital letters, but do NOT use spaces. -->
-	<name>PluginTemplate</name>
+	<name>RankForge</name>
 	
 	<!-- Change to the appropriate plugin's version, starting at 1.0.0. -->
 	<version>1.0.0</version>
@@ -21,10 +21,10 @@
 	<properties>
 		
 		<!-- Change to your name or the main project author. -->
-		<author>kangarko</author>
+		<author>ericvegax</author>
 		
 		<!-- Change to the full path where your main plugin class is located. -->
-		<main.class>org.mineacademy.template.PluginTemplate</main.class>
+		<main.class>dev.ericvega.rankforge.RankForgePlugin</main.class>
 		
 		<!-- Change the Java version this plugin is built on.
 
@@ -95,7 +95,11 @@
 				<!-- Change version to the latest one from
 					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
 				<version>3.3.0</version>
+				<configuration>
+					<outputDirectory>C:\Users\erict\OneDrive\Desktop\code\mc-dev\mc-server\1.20.2\plugins</outputDirectory>
+				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -104,10 +108,11 @@
 					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 				<version>3.11.0</version>
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
+					<source>16</source>
+					<target>16</target>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>

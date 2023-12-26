@@ -1,7 +1,6 @@
 package dev.ericvega.rankforge.command;
 
 import dev.ericvega.rankforge.command.manager.Rank;
-import dev.ericvega.rankforge.command.manager.RankManager;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.command.SimpleCommandGroup;
 import org.mineacademy.fo.command.SimpleSubCommand;

@@ -2,6 +2,7 @@ package dev.ericvega.rankforge;
 
 import dev.ericvega.rankforge.command.manager.RankDisplayManager;
 import lombok.Getter;
+import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.plugin.SimplePlugin;
 
 @Getter
@@ -12,6 +13,7 @@ public final class RankForgePlugin extends SimplePlugin {
 	@Override
 	protected void onPluginStart() {
 		rankDisplayManager = new RankDisplayManager();
+		setupMessengerPrefixes();
 	}
 
 	/**
@@ -39,9 +41,13 @@ public final class RankForgePlugin extends SimplePlugin {
 		//YourDatabase.getInstance().close();
 	}
 
-	/* ------------------------------------------------------------------------------- */
-	/* Static */
-	/* ------------------------------------------------------------------------------- */
+	public void setupMessengerPrefixes() {
+		Messenger.setAnnouncePrefix("&cRankForge>");
+		Messenger.setSuccessPrefix("&aRankForge>");
+		Messenger.setErrorPrefix("&cRankForge>");
+		Messenger.setInfoPrefix("&9RankForge>");
+		Messenger.setWarnPrefix("&6RankForge>");
+	}
 
 	/**
 	 * Return the instance of this plugin, which simply refers to a static

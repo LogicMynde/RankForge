@@ -24,7 +24,8 @@ public class RankDisplayManager {
         Rank rank = rankManager.getPlayerRank(player.getUniqueId());
 
         if (rank != null) {
-            String displayName = Common.colorize(rank.getPrefix() + " " + player.getName());
+//            String displayName = Common.colorize(rank.getPrefix() + " " + player.getName());
+            String displayName = Common.colorize(rank.getInheritColorPrefix() + " " + player.getName() + ChatColor.RESET);
 
             Bukkit.getScheduler().runTask(RankForgePlugin.getInstance(), () -> setPlayerRank(player, rank.getId()));
 
@@ -49,7 +50,9 @@ public class RankDisplayManager {
 
         if (team == null) {
             team = scoreboard.registerNewTeam(rankID);
-            team.setPrefix(Rank.getFromID(rankID).getPrefix() + " " + ChatColor.RESET);
+//            team.setPrefix(Rank.getFromID(rankID).getPrefix() + " " + ChatColor.RESET);
+            team.setPrefix(Rank.getFromID(rankID).getInheritColorPrefix() + " ");
+            team.setColor(Rank.getFromID(rankID).getColor());
         }
 
         return team;

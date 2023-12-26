@@ -20,6 +20,9 @@ public class SetSubCommand extends SimpleSubCommand {
         setMinArguments(2); // rank set {0} {1}
     }
 
+    /**
+     * In the future check if the player has a primary rank already, if YES replace it, if NO give them one
+     */
     @Override
     protected void onCommand() {
         checkConsole();

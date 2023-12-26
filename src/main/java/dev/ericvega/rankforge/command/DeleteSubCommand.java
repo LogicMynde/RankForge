@@ -21,12 +21,5 @@ public class DeleteSubCommand extends SimpleSubCommand {
         RankManager manager = RankManager.getInstance();
 
         String rankID = args[0];
-
-        if (manager.getRankList().contains(rankID)) {
-            manager.getRankList().remove(rankID);
-            tellSuccess("'{0}' rank has been deleted!");
-        } else {
-            tellError("'{0}' rank does not exist!");
-        }
     }
 }

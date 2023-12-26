@@ -31,15 +31,7 @@ public class CreateSubCommand extends SimpleSubCommand {
         String rankID = args[0];
         String rankDisplayName = Common.colorize(args[1]);
 
-        Rank rank = new Rank(rankID, rankDisplayName);
-
-        if (!manager.getRankList().contains(rank.getId())) { // The rank does not exist
-            manager.getRankList().add(rank.getId());
-
-            tellSuccess(Common.colorize("&a{0} ({1}&a) has successfully been created!"));
-        } else {
-            tellError("The '{0}' rank already exists!");
-        }
+        Rank rank = Rank.valueOf(rankID);
     }
 
     @Override

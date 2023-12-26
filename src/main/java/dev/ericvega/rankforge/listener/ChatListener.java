@@ -1,6 +1,6 @@
 package dev.ericvega.rankforge.listener;
 
-import dev.ericvega.rankforge.command.manager.RankDisplayManager;
+import dev.ericvega.rankforge.RankForgePlugin;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.mineacademy.fo.annotation.AutoRegister;
@@ -29,8 +29,6 @@ public final class ChatListener extends SimpleListener<AsyncPlayerChatEvent> {
 
 	@Override
 	protected void execute(AsyncPlayerChatEvent event) {
-		RankDisplayManager displayManager = new RankDisplayManager();
-
-		event.setFormat(displayManager.formatChatMessage(event.getPlayer()));
+		event.setFormat(RankForgePlugin.getInstance().getRankDisplayManager().formatChatMessage());
 	}
 }

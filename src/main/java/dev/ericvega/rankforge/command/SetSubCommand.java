@@ -1,6 +1,7 @@
 package dev.ericvega.rankforge.command;
 
-import dev.ericvega.rankforge.command.manager.RankDisplayManager;
+import dev.ericvega.rankforge.RankForgePlugin;
+import dev.ericvega.rankforge.command.manager.Rank;
 import dev.ericvega.rankforge.command.manager.RankManager;
 import org.bukkit.entity.Player;
 import org.mineacademy.fo.Common;
@@ -24,17 +25,16 @@ public class SetSubCommand extends SimpleSubCommand {
         checkConsole();
 
         RankManager manager = RankManager.getInstance();
-        RankDisplayManager displayManager = new RankDisplayManager();
 
         Player target = findPlayer(args[0], "Unable to locate &l{0}!");
         String rankID = args[1];
 
-        if (manager.getRankList().contains(rankID)) {
-            manager.setPlayerRank(target.getUniqueId(), manager.getRankById(rankID));
-            displayManager.updatePlayerDisplay(target);
+        if (Rank.contains(rankID)) {
+            manager.setPlayerRank(target, Rank.getFromID(rankID));
+            RankForgePlugin.getInstance().getRankDisplayManager().updatePlayerDisplay(target);
 
-            tellSuccess("Successfully set '{0}' with the primary rank of '{1}'");
-            Common.tell(target, "Your primary rank has been set to &a" + rankID);
+            tell("Successfully set primary rank of '{0}' to '{1}'");
+            Common.tell(target, "Primary rank set to " + Rank.getFromID(rankID).getPrefix());
         } else {
             tellError("'{1}' rank does not exist!");
         }

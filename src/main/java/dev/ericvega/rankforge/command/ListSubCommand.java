@@ -1,8 +1,12 @@
 package dev.ericvega.rankforge.command;
 
+import dev.ericvega.rankforge.command.manager.Rank;
 import dev.ericvega.rankforge.command.manager.RankManager;
+import org.mineacademy.fo.Common;
 import org.mineacademy.fo.command.SimpleCommandGroup;
 import org.mineacademy.fo.command.SimpleSubCommand;
+
+import java.util.Arrays;
 
 public class ListSubCommand extends SimpleSubCommand {
 
@@ -18,20 +22,8 @@ public class ListSubCommand extends SimpleSubCommand {
     protected void onCommand() {
         checkConsole();
 
-        RankManager manager = RankManager.getInstance();
-        StringBuilder message = new StringBuilder();
+        Rank[] rank = Rank.values();
 
-        if (manager.getRankList().size() > 1) {
-
-            for (String rank : manager.getRankList()) {
-                message.append(rank).append(", ");
-            }
-            tellInfo(message.toString());
-
-        } else if (manager.getRankList().isEmpty()) {
-            tellError("No ranks available.");
-        } else {
-            tellInfo(manager.getRankList().toString());
-        }
+        Common.tell(getPlayer(), Arrays.toString(rank));
     }
 }

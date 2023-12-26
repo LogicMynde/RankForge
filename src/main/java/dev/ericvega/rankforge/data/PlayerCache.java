@@ -1,11 +1,10 @@
-package dev.ericvega.rankforge;
+package dev.ericvega.rankforge.data;
 
 import java.util.*;
 
 import javax.annotation.Nullable;
 
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.Common;
 import org.mineacademy.fo.constants.FoConstants;
 import org.mineacademy.fo.remain.Remain;
 import org.mineacademy.fo.settings.YamlConfig;

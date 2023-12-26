@@ -1,15 +1,17 @@
 package dev.ericvega.rankforge;
 
+import dev.ericvega.rankforge.command.manager.RankDisplayManager;
+import lombok.Getter;
 import org.mineacademy.fo.plugin.SimplePlugin;
 
+@Getter
 public final class RankForgePlugin extends SimplePlugin {
 
-	/**
-	* Automatically perform login ONCE when the plugin starts.
-	*/
+	private RankDisplayManager rankDisplayManager;
+
 	@Override
 	protected void onPluginStart() {
-
+		rankDisplayManager = new RankDisplayManager();
 	}
 
 	/**
@@ -51,4 +53,5 @@ public final class RankForgePlugin extends SimplePlugin {
 	public static RankForgePlugin getInstance() {
 		return (RankForgePlugin) SimplePlugin.getInstance();
 	}
+
 }

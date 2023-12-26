@@ -1,68 +1,36 @@
 package dev.ericvega.rankforge.command.manager;
 
-import lombok.Getter;
+import org.bukkit.entity.Player;
 
 import java.util.*;
 
 public final class RankManager {
-
-    private final Map<UUID, Rank> playerRanks;
-
-    @Getter
-    private final List<String> rankList;
     private static RankManager manager;
 
+    private final Map<UUID, Rank> rankMap;
+
     public RankManager() {
-        playerRanks = new HashMap<>();
-        rankList = new ArrayList<>();
+        rankMap = new HashMap<>();
     }
 
     public void setPlayerRank(UUID uniqueID, Rank rank) {
-        playerRanks.put(uniqueID, rank);
+        rankMap.put(uniqueID, rank);
+    }
+
+    public void setPlayerRank(Player player, Rank rank) {
+        rankMap.put(player.getUniqueId(), rank);
     }
 
     public Rank getPlayerRank(UUID uniqueID) {
-        return playerRanks.getOrDefault(uniqueID, null);
+        return rankMap.get(uniqueID);
     }
 
-    public void removePlayerRank(UUID uniqueID) {
-        playerRanks.remove(uniqueID);
+    public Rank getPlayerRank(Player player) {
+        return rankMap.get(player.getUniqueId());
     }
 
-    /**
-     * Returns a Map of players with the specified Rank
-     */
-    public Map<UUID, Rank> getPlayersWithRank(Rank rank) {
-        Map<UUID, Rank> playersWithRank = new HashMap<>();
-
-        for (Map.Entry<UUID, Rank> entry : playerRanks.entrySet()) {
-            if (entry.getValue().equals(rank)) {
-                playersWithRank.put(entry.getKey(), rank);
-            }
-        }
-
-        return playersWithRank;
-    }
-
-    public void resetAllRanks() {
-        playerRanks.clear();
-    }
-
-    public Rank getRankById(String id) {
-        // Check if the provided ID is in the rankList
-        if (!rankList.contains(id)) {
-            return null;
-        }
-
-        // Search for the Rank object with the matching ID in playerRanks
-        for (Rank rank : playerRanks.values()) {
-            if (rank.getId().equals(id)) {
-                return rank;
-            }
-        }
-
-        // Return null if no matching Rank is found
-        return null;
+    public void clearAll() {
+        rankMap.clear();
     }
 
     /**

@@ -1,7 +1,7 @@
 package dev.ericvega.rankforge.api;
 
 import org.bukkit.entity.Player;
-import dev.ericvega.rankforge.PlayerCache;
+import dev.ericvega.rankforge.data.PlayerCache;
 import dev.ericvega.rankforge.RankForgePlugin;
 
 /**

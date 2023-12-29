@@ -11,6 +11,8 @@ public final class RankManager {
 
     private final Map<UUID, Rank> rankMap;
 
+    private final String PRIMARY_RANK_PATH = "primaryRank";
+
     public RankManager() {
         rankMap = new HashMap<>();
     }
@@ -19,7 +21,7 @@ public final class RankManager {
         rankMap.put(uniqueID, rank);
 
         Player player = Remain.getPlayerByUUID(uniqueID);
-        PlayerCache.from(player).save(player.getUniqueId() + ".primaryRank", rank.getId());
+        PlayerCache.from(player).save(PRIMARY_RANK_PATH, rank.getId());
     }
 
     public void setPlayerRank(Player player, Rank rank) {
@@ -29,8 +31,8 @@ public final class RankManager {
     public Rank getPlayerRank(UUID uniqueID) {
         Player player = Remain.getPlayerByUUID(uniqueID);
 
-        if (PlayerCache.from(player).get(player.getUniqueId() + ".primaryRank", String.class) != null) {
-            return Rank.getFromID(PlayerCache.from(player).get(player.getUniqueId() + ".primaryRank", String.class));
+        if (PlayerCache.from(player).get(PRIMARY_RANK_PATH, String.class) != null) {
+            return Rank.getFromID(PlayerCache.from(player).get(PRIMARY_RANK_PATH, String.class));
         }
 
         return rankMap.get(uniqueID);

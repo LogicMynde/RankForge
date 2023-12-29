@@ -1,6 +1,8 @@
 package dev.ericvega.rankforge.command.manager;
 
+import dev.ericvega.rankforge.data.PlayerCache;
 import org.bukkit.entity.Player;
+import org.mineacademy.fo.remain.Remain;
 
 import java.util.*;
 
@@ -15,18 +17,27 @@ public final class RankManager {
 
     public void setPlayerRank(UUID uniqueID, Rank rank) {
         rankMap.put(uniqueID, rank);
+
+        Player player = Remain.getPlayerByUUID(uniqueID);
+        PlayerCache.from(player).save(player.getUniqueId() + ".primaryRank", rank.getId());
     }
 
     public void setPlayerRank(Player player, Rank rank) {
-        rankMap.put(player.getUniqueId(), rank);
+        setPlayerRank(player.getUniqueId(), rank);
     }
 
     public Rank getPlayerRank(UUID uniqueID) {
+        Player player = Remain.getPlayerByUUID(uniqueID);
+
+        if (PlayerCache.from(player).get(player.getUniqueId() + ".primaryRank", String.class) != null) {
+            return Rank.getFromID(PlayerCache.from(player).get(player.getUniqueId() + ".primaryRank", String.class));
+        }
+
         return rankMap.get(uniqueID);
     }
 
     public Rank getPlayerRank(Player player) {
-        return rankMap.get(player.getUniqueId());
+        return getPlayerRank(player.getUniqueId());
     }
 
     public void clearAll() {

@@ -57,4 +57,8 @@ public class RankDisplayManager {
 
         return team;
     }
+
+    public Team getTeamForPlayer(Player player) {
+        return scoreboard.getTeam(rankManager.getPlayerRank(player).getId());
+    }
 }

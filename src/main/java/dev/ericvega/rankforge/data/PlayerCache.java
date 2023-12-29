@@ -1,7 +1,5 @@
 package dev.ericvega.rankforge.data;
 
-import java.util.*;
-
 import javax.annotation.Nullable;
 
 import org.bukkit.entity.Player;
@@ -10,6 +8,11 @@ import org.mineacademy.fo.remain.Remain;
 import org.mineacademy.fo.settings.YamlConfig;
 
 import lombok.Getter;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * A sample player cache storing permanent player information
@@ -33,16 +36,6 @@ public final class PlayerCache extends YamlConfig {
 	 */
 	private final String playerName;
 
-	/**
-	 * This instance's player's primary rank
-	 */
-	private final String playerPrimaryRank;
-
-	/**
-	 * This instance's player's sub-ranks
-	 */
-	private final String[] playerSubRanks;
-
 	//
 	// Store any custom saveable data here
 	//
@@ -50,19 +43,12 @@ public final class PlayerCache extends YamlConfig {
 	/*
 	 * Creates a new player cache (see the bottom)
 	 */
-
-	private PlayerCache(String name, UUID uniqueId, String primaryRank, String[] subRanks) {
+	private PlayerCache(String name, UUID uniqueId) {
 		this.playerName = name;
 		this.uniqueId = uniqueId;
-		this.playerPrimaryRank = primaryRank;
-		this.playerSubRanks = subRanks;
 
-		this.setPathPrefix("Players." + uniqueId.toString() + "." + primaryRank.toLowerCase() + ".[" + Arrays.toString(subRanks) + "]"); // Players.notch.21313-123123-123123.admin.[forum mod, helper]
+		this.setPathPrefix("Players." + uniqueId.toString());
 		this.loadConfiguration(NO_DEFAULT, FoConstants.File.DATA);
-	}
-
-	private PlayerCache(String name, UUID uniqueId, String primaryRank) {
-		this(name, uniqueId, primaryRank, null);
 	}
 
 	/**
@@ -172,7 +158,7 @@ public final class PlayerCache extends YamlConfig {
 			PlayerCache cache = cacheMap.get(uniqueId);
 
 			if (cache == null) {
-				cache = new PlayerCache(playerName, uniqueId, "default");
+				cache = new PlayerCache(playerName, uniqueId);
 
 				cacheMap.put(uniqueId, cache);
 			}

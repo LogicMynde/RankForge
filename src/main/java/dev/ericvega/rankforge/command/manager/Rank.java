@@ -13,7 +13,11 @@ public enum Rank {
     BUILDER("builder", ChatColor.BLUE, false, false, 4, "builder"),
     MODERATOR("mod", ChatColor.DARK_GREEN, false, false, 3, "mod"),
     HELPER("helper", ChatColor.GOLD, false, false, 2, "helper"),
-    DEFAULT("", null, false, false, 1, "default");
+    DEFAULT("", null, false, false, 1, "default"),
+
+    // sub ranks
+    FORUM_MOD("ForumMod", null, false, false, 0, "fm"),
+    QUALITY_ASSURANCE("QualityAssurance", null, false, false, 0, "qa");
 
     private final String name;
     private final ChatColor color;

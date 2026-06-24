@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<!-- Change to your own main package name. -->
-	<groupId>dev.ericvega</groupId>
+	<groupId>dev.logicmynde</groupId>
 	
 	<!-- Change to your plugin name, must be lower cased and match your end package name. No spaces. -->
 	<artifactId>rankforge</artifactId>
@@ -21,7 +21,7 @@
 	<properties>
 		
 		<!-- Change to your name or the main project author. -->
-		<author>ericvegax</author>
+		<author>logicmynde</author>
 		
 		<!-- Change to the full path where your main plugin class is located. -->
 		<main.class>dev.ericvega.rankforge.RankForgePlugin</main.class>

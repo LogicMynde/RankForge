@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<!-- Change to your own main package name. -->
-	<groupId>dev.logicmynde</groupId>
+	<groupId>dev.ericvega</groupId>
 	
 	<!-- Change to your plugin name, must be lower cased and match your end package name. No spaces. -->
 	<artifactId>rankforge</artifactId>
